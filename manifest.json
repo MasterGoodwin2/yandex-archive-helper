@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "ЯндексАрхив Helper (ЯндексАрхив помощник)",
+  "version": "1.0.0",
+  "description": "Плавающее окно распознанного текста для Яндекс.Архива с переносом верстки текстового сегмента, сшивкой, нормализацией имён/отчеств/дат и быстрым экспортом.",
+  "permissions": [
+    "storage",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://ya.ru/archive/*",
+    "https://*.ya.ru/archive/*",
+    "https://yandex.ru/archive/*",
+    "https://*.yandex.ru/archive/*"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://ya.ru/archive/*",
+        "https://*.ya.ru/archive/*",
+        "https://yandex.ru/archive/*",
+        "https://*.yandex.ru/archive/*"
+      ],
+      "js": [
+        "names-ru.js",
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "yandex-archive-helper@mastergoodwin2",
+      "strict_min_version": "109.0"
+    }
+  }
+}
